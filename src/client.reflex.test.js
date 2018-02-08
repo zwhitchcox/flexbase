@@ -1,22 +1,22 @@
-import { Reflex as ReflexServer } from './server.reflex'
-import { Reflex as ReflexClient } from './client.reflex'
+import { FlexBase as FlexBaseServer } from './server.flexbase'
+import { FlexBase as FlexBaseClient } from './client.flexbase'
 const PORT = ((Math.random()*4000)+3000) | 0
 const express = require('express')
 const app = express()
-const reflex = {}
+const flexbase = {}
 
 let client1, client2;
 beforeAll(done => {
   const server = app.listen(PORT, () => {
-    reflex.server = new ReflexServer({server, name: 'server'})
+    flexbase.server = new FlexBaseServer({server, name: 'server'})
 
-    client1 = new ReflexClient({
-      url: `ws://localhost:${PORT}/reflex`,
+    client1 = new FlexBaseClient({
+      url: `ws://localhost:${PORT}/flexbase`,
       name: 'client 1',
     })
 
-    client2 = new ReflexClient({
-      url: `ws://localhost:${PORT}/reflex`,
+    client2 = new FlexBaseClient({
+      url: `ws://localhost:${PORT}/flexbase`,
       name: 'client 2',
     })
 

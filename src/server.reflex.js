@@ -2,7 +2,7 @@ const url = require('url')
 const WS = require('ws')
 const express = require('express')
 
-export class Reflex {
+export class FlexBase {
   data = {}
   constructor({server, name}) {
     if (!server) throw new TypeError('We require a server!')
@@ -10,7 +10,7 @@ export class Reflex {
     server.on('upgrade', (req, socket, head) => {
       console.log('upgrading')
       const pathname = url.parse(req.url, true)
-      if (pathname.href === '/reflex') {
+      if (pathname.href === '/flexbase') {
         this.wss.handleUpgrade(req, socket, head, ws => {
           ws.send(JSON.stringify({type: 'update', data: {hello:3}}))
           this.wss.emit('connection', ws)

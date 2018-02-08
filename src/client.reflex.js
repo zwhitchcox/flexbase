@@ -1,7 +1,7 @@
 import EventEmitter from 'events'
 const WebSocket = (typeof window !== 'undefined') ? window.WebSocket : require('ws')
 
-export class Reflex extends EventEmitter {
+export class FlexBase extends EventEmitter {
   pending = []
   data = {}
 
@@ -54,5 +54,5 @@ export class Reflex extends EventEmitter {
 }
 
 function makeurlws(str) {
-  return 'ws://' + str.replace(/^https?:\/\//, '') + 'reflex'
+  return 'ws://' + str.replace(/^https?:\/\//, '') + 'flexbase'
 }

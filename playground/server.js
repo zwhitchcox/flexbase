@@ -1,4 +1,4 @@
-import {Reflex} from '..'
+import {FlexBase} from '..'
 require('source-map-support').install()
 const url = require('url')
 const WS = require('ws')
@@ -15,4 +15,4 @@ app.use(express.static(__dirname))
 app.get('/ready', (req, res) => res.end('true'))
 
 const server = app.listen(3000, () => console.log('app is listening http://localhost:3000'))
-const reflex = new Reflex({server})
+const flexbase = new FlexBase({server})
